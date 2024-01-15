@@ -1,0 +1,110 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 0 1rem;
+  background: #223B7B;
+  font-family: Montserrat, sans-serif;
+  line-height: 1.3;
+}
+
+img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;  
+}
+
+article * {
+  margin: 0;
+}
+
+h3 {
+  font-size: 1.3em;
+  margin-bottom: 0.2em;
+  line-height: 1.24;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.grid-container {
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 1400px;
+  background: #46BAD1;
+}
+
+.grid-container {
+  container: layout / inline-size;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@container layout (inline-size > 800px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* The featured article should span two columns */
+  .article-container:first-child {
+    grid-column: span 2;
+  }
+}
+
+@container layout (inline-size > 1000px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .article-container:first-child {
+    grid-column: span 4;
+  }
+
+  .article-container:nth-child(2),
+  .article-container:nth-child(3) {
+    grid-column: span 2;
+  }
+}
+
+.article-container {
+  container: article / inline-size;
+}
+
+article {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  padding: clamp(1rem, 4cqi, 2rem);
+  font-size: clamp(1rem, 3cqi, 1.6rem);
+  object-fit: cover;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 4cqi, 2.5rem);
+}
+
+@container article (inline-size > 500px) {
+  article {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+@container article (inline-size > 800px) {
+  article {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5em;
+  }
+}
